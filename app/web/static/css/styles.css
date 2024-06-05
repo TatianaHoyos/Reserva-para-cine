@@ -1,0 +1,108 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+.container {
+    margin-top: 50px;
+}
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.movie-card {
+    margin-bottom: 30px;
+}
+.movie-poster {
+    width: 100%;
+    height: auto;
+}
+.btn-primary {
+    width: 100%;
+}
+
+/* 
+.seats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.seat {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: 1px solid #bbb;
+    cursor: pointer;
+}
+.seat.selected {
+    background-color: #5cb85c;
+}
+.seat.occupied {
+    background-color: #d9534f;
+    cursor: not-allowed;
+}
+.btn-primary {
+    width: 100%;
+    margin-top: 20px;
+} */
+
+.screen {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.seats {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.seat {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: 1px solid #bbb;
+    cursor: pointer;
+}
+.seat.selected {
+    background-color: #5cb85c;
+}
+.seat.occupied {
+    background-color: #d9534f;
+    cursor: not-allowed;
+}
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.legend div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.legend div span {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.legend .free-seat span {
+    background-color: #ddd;
+}
+.legend .occupied-seat span {
+    background-color: #d9534f;
+}
+.legend .selected-seat span {
+    background-color: #5cb85c;
+}
+.btn-primary {
+    width: 100%;
+    margin-top: 20px;
+}
+.selected-seats {
+    margin-top: 20px;
+}
