@@ -6,35 +6,27 @@
     <title>Selecciona tus Asientos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
- 
 </head>
 <body>
     <div class="container">
         <form id="seatsForm">
             <div class="header">
                 <h1>Selecciona tus Asientos</h1>
-                <p>Elige los asientos que deseas reservar para la película {{ movie_id }}</p>
+                <p>Elige los asientos que deseas reservar para la película  {{ funtions[0].movie }}.</p>
             </div>
+
+            <!-- Listado de Funciones Disponibles -->
             <div class="form-group">
-                <label for="theater">Sala</label>
-                <select class="form-control" id="theater" name="theater" required>
-                    <option value="1">Sala 1 - Normal</option>
-                    <option value="2">Sala 2 - 2D</option>
-                    <option value="3">Sala 3 - IMAX</option>
+                <label for="function">Funciones Disponibles</label>
+                <select class="form-control" id="function" name="function" required>
+                    {% for function in funtions %}
+                        <option value="{{ function.id }}">
+                            Sala: {{ function.room.id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
+                        </option>
+                    {% endfor %}
                 </select>
             </div>
-            <div class="form-group">
-                <label for="date">Fecha</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-            <div class="form-group">
-                <label for="time">Hora</label>
-                <select class="form-control" id="time" name="time" required>
-                    <option value="18:00">18:00</option>
-                    <option value="20:00">20:00</option>
-                    <option value="22:00">22:00</option>
-                </select>
-            </div>
+
             <div class="screen">Pantalla</div>
             <div class="seats">
                 {% for row in range(3) %}
