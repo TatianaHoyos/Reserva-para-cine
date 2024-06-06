@@ -9,6 +9,3 @@ class ReservationRepository:
         if not self.reservation_table.all():
             self.reservation_table.insert({'idCliente': 0, 'idBoleto': 0, 'fecha_reserva': ''})
 
-
-repo = ReservationRepository("cine.json")
-repo.create_empty_table()
