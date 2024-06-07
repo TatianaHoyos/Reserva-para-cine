@@ -1,31 +1,15 @@
-const seats = document.querySelectorAll('.seat:not(.occupied)');
-const selectedSeatsInput = document.getElementById('selectedSeats');
-const selectedSeatsList = document.getElementById('selectedSeatsList');
-
-seats.forEach(seat => {
-    seat.addEventListener('click', () => {
-        seat.classList.toggle('selected');
-        updateSelectedSeats();
+function showSeats(id) {
+    var seatContainers = document.querySelectorAll('.seat-container');
+    seatContainers.forEach(function(container) {
+        container.style.display = 'none';
     });
-});
-
-function updateSelectedSeats() {
-    const selectedSeats = document.querySelectorAll('.seat.selected');
-    const seatsIndex = [...selectedSeats].map(seat => seat.getAttribute('data-seat'));
-    selectedSeatsInput.value = seatsIndex.join(',');
-    updateSelectedSeatsList(seatsIndex);
+    document.getElementById('seats_' + id).style.display = 'block';
 }
 
-function updateSelectedSeatsList(seatsIndex) {
-    selectedSeatsList.innerHTML = '';
-    seatsIndex.forEach(seat => {
-        const listItem = document.createElement('li');
-        listItem.textContent = seat;
-        selectedSeatsList.appendChild(listItem);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('function').addEventListener('change', function() {
+        showSeats(this.value);
     });
-}
-
-document.getElementById('seatsForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Reserva confirmada para los asientos: ' + selectedSeatsInput.value);
+    // Mostrar la primera función por defecto
+    showSeats(document.getElementById('function').value);
 });
