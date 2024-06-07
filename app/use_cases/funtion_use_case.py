@@ -16,19 +16,25 @@ class FuntionUseCase:
         room_data = self.room_repository.get_all_rooms_by_funtions(room_ids)
         room_dict = {room['id']: room for room in room_data}
 
-        # Crear objetos Funtion
+       # Crear objetos Funtion
         functions = []
         for function in funtion_data:
             room = room_dict.get(function['room_id'])
             movie = function['movie_id']
             if room:
-                
                 capacity = room['capacidad']
                 rows = capacity // 10
                 cols = 10
-                seats = [[True for _ in range(cols)] for _ in range(rows)]
+                seats = []
+
+                for r in range(rows):
+                    row_label = chr(65 + r)  # Genera las letras A, B, C, etc.
+                    for c in range(cols):
+                        seat_label = f"{row_label}{c + 1}"
+                        seats.append({"label": seat_label, "available": True})
+                
                 function['seats'] = seats
-            function['movie_id'] = function['movie_id']  
+            function['movie_id'] = function['movie_id']
             functions.append(function)
         
         return functions

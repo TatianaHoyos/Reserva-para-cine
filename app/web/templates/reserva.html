@@ -29,28 +29,22 @@
 
             <div class="seats">
                 {% for function in funtions %}
-                    <div id="seats_{{ function.id }}" style="display:none;">
-                        {% for row in function.seats %}
-                            <div class="seat-row">
-                                {% for seat in row %}
-                                    <div class="seat {% if not seat %}occupied{% endif %}" data-seat="{{ seat }}"></div>
-                                {% endfor %}
-                            </div>
-                        {% endfor %}
+                    <div id="seats_{{ function.id }}" class="seat-container" style="display:none;">
+                        <div class="screen">Pantalla</div>
+                        <div class="seat-grid">
+                            {% for seat in function.seats %}
+                                <div class="seat {% if not seat.available %}occupied{% endif %}" data-seat="{{ seat.label }}" onclick="toggleSeat(this)">
+                                    {{ seat.label }}
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 {% endfor %}
             </div>
-
             <div class="legend">
-                <div class="free-seat">
-                    <span></span> Asiento Libre
-                </div>
-                <div class="occupied-seat">
-                    <span></span> Asiento Ocupado
-                </div>
-                <div class="selected-seat">
-                    <span></span> Asiento Seleccionado
-                </div>
+                <div class="free-seat"><span></span> Libre</div>
+                <div class="occupied-seat"><span></span> Ocupado</div>
+                <div class="selected-seat"><span></span> Seleccionado</div>
             </div>
 
             <div class="selected-seats">

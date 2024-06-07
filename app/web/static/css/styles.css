@@ -26,32 +26,6 @@ body {
     width: 100%;
 }
 
-/* 
-.seats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-.seat {
-    width: 30px;
-    height: 30px;
-    background-color: #ddd;
-    border: 1px solid #bbb;
-    cursor: pointer;
-}
-.seat.selected {
-    background-color: #5cb85c;
-}
-.seat.occupied {
-    background-color: #d9534f;
-    cursor: not-allowed;
-}
-.btn-primary {
-    width: 100%;
-    margin-top: 20px;
-} */
-
 .screen {
     background-color: #333;
     color: #fff;
@@ -59,24 +33,26 @@ body {
     padding: 10px;
     margin-bottom: 20px;
 }
-.seat-row {
+/* .seat-row {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-}
-.seats {
+} */
+.seat-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(10, 1fr); /* Cambia este número según el número de columnas que deseas */
     gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
 }
 .seat {
-    width: 30px;
+    width: 50px;
     height: 30px;
     background-color: #ddd;
     border: 1px solid #bbb;
     cursor: pointer;
+    text-align: center; /* Para centrar el texto dentro del asiento */
+    line-height: 30px; /* Para centrar verticalmente el texto dentro del asiento */
 }
 .seat.selected {
     background-color: #5cb85c;
