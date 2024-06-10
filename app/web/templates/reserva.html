@@ -12,7 +12,7 @@
         <form id="seatsForm">
             <div class="header">
                 <h1>Selecciona tus Asientos</h1>
-                <p>Elige los asientos que deseas reservar para la película.</p>
+                <p>Elige los asientos que deseas reservar para la película  {{ funtions[0].movie_id }}.</p>
             </div>
 
             <!-- Listado de Funciones Disponibles -->
@@ -21,7 +21,7 @@
                 <select class="form-control" id="function" name="function" required>
                     {% for function in funtions %}
                         <option value="{{ function.id }}">
-                            Película: {{ function.movie_id }}, Sala: {{ function.room_id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
+                            Sala: {{ function.room_id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
                         </option>
                     {% endfor %}
                 </select>
