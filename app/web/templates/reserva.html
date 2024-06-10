@@ -12,7 +12,7 @@
         <form id="seatsForm">
             <div class="header">
                 <h1>Selecciona tus Asientos</h1>
-                <p>Elige los asientos que deseas reservar para la película  {{ funtions[0].movie }}.</p>
+                <p>Elige los asientos que deseas reservar para la película  {{ funtions[0].movie_id }}.</p>
             </div>
 
             <!-- Listado de Funciones Disponibles -->
@@ -21,35 +21,37 @@
                 <select class="form-control" id="function" name="function" required>
                     {% for function in funtions %}
                         <option value="{{ function.id }}">
-                            Sala: {{ function.room.id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
+                            Sala: {{ function.room_id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
                         </option>
                     {% endfor %}
                 </select>
             </div>
 
-            <div class="screen">Pantalla</div>
             <div class="seats">
-                {% for row in range(3) %}
-                    {% for col in range(7) %}
-                        <div class="seat" data-seat="{{ 'R' ~ row ~ 'C' ~ col }}"></div>
-                    {% endfor %}
+                {% for function in funtions %}
+                    <div id="seats_{{ function.id }}" class="seat-container" style="display:none;">
+                        <div class="screen">Pantalla</div>
+                        <div class="seat-grid">
+                            {% for seat in function.seats %}
+                                <div class="seat {% if not seat.available %}occupied{% endif %}" data-seat="{{ seat.label }}" onclick="toggleSeat(this)">
+                                    {{ seat.label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
             <div class="legend">
-                <div class="free-seat">
-                    <span></span> Asiento Libre
-                </div>
-                <div class="occupied-seat">
-                    <span></span> Asiento Ocupado
-                </div>
-                <div class="selected-seat">
-                    <span></span> Asiento Seleccionado
-                </div>
+                <div class="free-seat"><span></span> Libre</div>
+                <div class="occupied-seat"><span></span> Ocupado</div>
+                <div class="selected-seat"><span></span> Seleccionado</div>
             </div>
+
             <div class="selected-seats">
                 <h4>Asientos Seleccionados:</h4>
                 <ul id="selectedSeatsList"></ul>
             </div>
+
             <input type="hidden" id="selectedSeats" name="selectedSeats">
             <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
         </form>

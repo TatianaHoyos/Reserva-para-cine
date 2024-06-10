@@ -1,31 +1,30 @@
-const seats = document.querySelectorAll('.seat:not(.occupied)');
-const selectedSeatsInput = document.getElementById('selectedSeats');
-const selectedSeatsList = document.getElementById('selectedSeatsList');
+function showSeats(id) {
+    var seatContainers = document.querySelectorAll('.seat-container');
+    seatContainers.forEach(function(container) {
+        container.style.display = 'none';
+    });
+    document.getElementById('seats_' + id).style.display = 'block';
+}
 
-seats.forEach(seat => {
-    seat.addEventListener('click', () => {
+function toggleSeat(seat) {
+    if (!seat.classList.contains('occupied')) {
         seat.classList.toggle('selected');
         updateSelectedSeats();
-    });
-});
+    }
+}
 
 function updateSelectedSeats() {
-    const selectedSeats = document.querySelectorAll('.seat.selected');
-    const seatsIndex = [...selectedSeats].map(seat => seat.getAttribute('data-seat'));
-    selectedSeatsInput.value = seatsIndex.join(',');
-    updateSelectedSeatsList(seatsIndex);
-}
-
-function updateSelectedSeatsList(seatsIndex) {
-    selectedSeatsList.innerHTML = '';
-    seatsIndex.forEach(seat => {
-        const listItem = document.createElement('li');
-        listItem.textContent = seat;
-        selectedSeatsList.appendChild(listItem);
+    var selectedSeats = document.querySelectorAll('.seat.selected');
+    var seatNumbers = Array.from(selectedSeats).map(function(seat) {
+        return seat.getAttribute('data-seat');
     });
+    document.querySelector('.selected-seats').innerText = 'Asientos seleccionados: ' + seatNumbers.join(', ');
 }
 
-document.getElementById('seatsForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Reserva confirmada para los asientos: ' + selectedSeatsInput.value);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('function').addEventListener('change', function() {
+        showSeats(this.value);
+    });
+    // Mostrar la primera función por defecto
+    showSeats(document.getElementById('function').value);
 });
