@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, jsonify, url_for
 from app import app
 from app.domain.entities.movie import Movie
 from app.adapters.database.movie_repository import MovieRepository
@@ -41,3 +41,17 @@ def eliminardatos():
     configuration_use_case = ConfiguratonUseCase(movie_repository, room_repository, funtion_repository)
     configuration_use_case.eliminar_datos()
     return "se eliminaron los datos"
+
+@app.route('/confirmar_reserva', methods=['POST'])
+def confirmar_reserva():
+    data = request.get_json()
+    selected_seats = data.get('selectedSeats')
+    # Aquí puedes procesar los asientos seleccionados y realizar las acciones necesarias
+    # Por ejemplo, guardar la reserva en la base de datos
+ 
+    # Redirige a la página de confirmación de reserva
+    return jsonify({'redirect': url_for('reserva_confirmada')})
+
+@app.route('/reserva_confirmada')
+def reserva_confirmada():
+    return render_template('reserva_confirmada.html')
