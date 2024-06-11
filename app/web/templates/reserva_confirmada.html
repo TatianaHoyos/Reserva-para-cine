@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Confirmada</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+        }
+        p {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Reserva Confirmada!</h1>
+        <p>Tu reserva ha sido confirmada con éxito.</p>
+        <h2>Detalles de la reserva:</h2>
+        <p>Película: {{ movie }}</p>
+        <p>Sala: {{ room }}</p>
+        <p>Asientos seleccionados: {{ seats }}</p>
+        <button class="btn" onclick="window.location.href='/';">Volver al Inicio</button>
+    </div>
+</body>
+</html>
