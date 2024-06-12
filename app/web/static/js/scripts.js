@@ -1,3 +1,4 @@
+
 function showSeats(id) {
     var seatContainers = document.querySelectorAll('.seat-container');
     seatContainers.forEach(function(container) {

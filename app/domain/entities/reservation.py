@@ -1,9 +1,6 @@
 class Reservation:
-    def __init__(self, id, movie, room, seats, hora): #falta agregar fechas
+    def __init__(self, id, movie, function, seats):
         self.id = id
         self.movie = movie
-        self.room = room
+        self.function = function
         self.seats = seats
-        self.hora = hora
-        
-

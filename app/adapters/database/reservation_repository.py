@@ -7,5 +7,11 @@ class ReservationRepository:
 
     def create_empty_table(self):
         if not self.reservation_table.all():
-            self.reservation_table.insert({'idCliente': 0, 'idBoleto': 0, 'fecha_reserva': ''})
+            self.reservation_table.insert({'id': 0, "movie_id": 0, "function_id": 0, 'seats': ''})
 
+    def save_reservation(self, reservation):
+        self.reservation_table.insert({
+            'movie_id': reservation.movie_id,
+            'function_id': reservation.function_id,
+            'seats': reservation.seats
+        })
