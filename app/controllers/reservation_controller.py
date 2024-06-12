@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, jsonify, url_for
 from app import app
 from app.adapters.database.reservation_repository import ReservationRepository
 from app.domain.entities.movie import Movie
@@ -12,7 +12,7 @@ from app.use_cases.reservation_use_case import ReservationUseCase
 
 @app.route('/')
 def movie_list():
-    movie_repository = MovieRepository()  
+    movie_repository = MovieRepository()
     movies_use_case = MoviesUseCase(movie_repository)
     movies = movies_use_case.listar_peliculas()
     return render_template('index.html', movies=movies)
@@ -32,12 +32,35 @@ def reserva():
 
 @app.route('/reservar', methods=['POST'])
 def reservar():
+    print(request.form)
     movie_id = request.form['movie_id']
     function_id = request.form['function_id']
     seats = request.form['selectedSeats']
-
     reservation_repository = ReservationRepository()  
     reservation_use_case = ReservationUseCase(reservation_repository)
     reservation_use_case.crear_reserva(movie_id, function_id, seats)
 
     return redirect(url_for('confirmacion'))
+    
+@app.route('/eliminardatos')
+def eliminardatos():
+    movie_repository = MovieRepository()
+    room_repository = RoomRepository()
+    funtion_repository = FuntionRepository()  # No pasar room_repository
+    configuration_use_case = ConfiguratonUseCase(movie_repository, room_repository, funtion_repository)
+    configuration_use_case.eliminar_datos()
+    return "se eliminaron los datos"
+
+@app.route('/confirmar_reserva', methods=['POST'])
+def confirmar_reserva():
+    data = request.get_json()
+    selected_seats = data.get('selectedSeats')
+    # Aquí puedes procesar los asientos seleccionados y realizar las acciones necesarias
+    # Por ejemplo, guardar la reserva en la base de datos
+ 
+    # Redirige a la página de confirmación de reserva
+    return jsonify({'redirect': url_for('reserva_confirmada')})
+
+@app.route('/reserva_confirmada')
+def reserva_confirmada():
+    return render_template('reserva_confirmada.html')
