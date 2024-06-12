@@ -29,23 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     showSeats(document.getElementById('function').value);
 });
 
-// function confirmarReserva() {
- 
-//     fetch('/confirmar_reserva', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ 'selectedSeats': 'selectedSeats' })
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         if (data.redirect) {
-//             window.location.href = data.redirect;
-//         }
-//     })
-//     .catch(error => console.error('Error:', error));
-// }
 function confirmarReserva() {
     // Obtiene los datos de los asientos seleccionados del input oculto
     var selectedSeats = document.getElementById('selectedSeats').value;
