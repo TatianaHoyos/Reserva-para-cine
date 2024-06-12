@@ -1,3 +1,4 @@
+
 function showSeats(id) {
     var seatContainers = document.querySelectorAll('.seat-container');
     seatContainers.forEach(function(container) {
@@ -30,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function confirmarReserva() {
- 
     fetch('/confirmar_reserva', {
         method: 'POST',
         headers: {
