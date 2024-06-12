@@ -5,40 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva Confirmada</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
             padding-top: 50px;
             text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
         }
         h1 {
             color: #007bff;
+            margin-bottom: 20px;
+        }
+        .icon {
+            font-size: 48px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #343a40;
+            margin-bottom: 20px;
         }
         p {
             color: #6c757d;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         .btn {
             background-color: #007bff;
             color: #fff;
             border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            margin-top: 20px;
+            color: #adb5bd;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <i class="fas fa-check-circle icon"></i>
         <h1>¡Reserva Confirmada!</h1>
         <p>Tu reserva ha sido confirmada con éxito.</p>
         <h2>Detalles de la reserva:</h2>
-        <p>Película: {{ movie }}</p>
-        <p>Sala: {{ room }}</p>
-        <p>Asientos seleccionados: {{ seats }}</p>
+        <p><strong>Película y Sala:</strong> {{ function_text }}</p>
+        <p><strong>Asientos seleccionados:</strong> {{ seats }}</p>
         <button class="btn" onclick="window.location.href='/';">Volver al Inicio</button>
+        <div class="footer">
+            <p>Gracias por tu reserva. ¡Disfruta la película!</p>
+        </div>
     </div>
 </body>
 </html>

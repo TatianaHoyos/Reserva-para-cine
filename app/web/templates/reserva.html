@@ -12,16 +12,16 @@
         <form id="seatsForm">
             <div class="header">
                 <h1>Selecciona tus Asientos</h1>
-                <p>Elige los asientos que deseas reservar para la película  {{ funtions[0].movie_id }}.</p>
+                <p>Elige los asientos que deseas reservar para la película {{ funtions[0].movie_id }}.</p>
             </div>
 
             <!-- Listado de Funciones Disponibles -->
             <div class="form-group">
                 <label for="function">Funciones Disponibles</label>
-                <select class="form-control" id="function" name="function" required>
+                <select class="form-control" id="function" name="function" required onchange="showSeats()">
                     {% for function in funtions %}
                         <option value="{{ function.id }}">
-                            Sala: {{ function.room_id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
+                            Película: {{ function.movie_id }}, Sala: {{ function.room_id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
                         </option>
                     {% endfor %}
                 </select>
@@ -53,8 +53,49 @@
             </div>
 
             <input type="hidden" id="selectedSeats" name="selectedSeats">
-            <button type="button" class="btn btn-primary" onclick="confirmarReserva()">Confirmar Reserva</button>        </form>
+            <button type="button" class="btn btn-primary" onclick="confirmarReserva()">Confirmar Reserva</button>
+        </form>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script>
+        function showSeats() {
+            const selectedFunction = document.getElementById('function').value;
+            const seatContainers = document.querySelectorAll('.seat-container');
+            seatContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+            document.getElementById('seats_' + selectedFunction).style.display = 'block';
+        }
+
+        function toggleSeat(seat) {
+            if (!seat.classList.contains('occupied')) {
+                seat.classList.toggle('selected');
+                updateSelectedSeats();
+            }
+        }
+
+        function updateSelectedSeats() {
+            const selectedSeats = document.querySelectorAll('.seat.selected');
+            const seatLabels = Array.from(selectedSeats).map(seat => seat.getAttribute('data-seat'));
+            document.getElementById('selectedSeats').value = seatLabels.join(',');
+            const selectedSeatsList = document.getElementById('selectedSeatsList');
+            selectedSeatsList.innerHTML = '';
+            seatLabels.forEach(label => {
+                const li = document.createElement('li');
+                li.textContent = label;
+                selectedSeatsList.appendChild(li);
+            });
+        }
+
+        function confirmarReserva() {
+            const selectedFunction = document.getElementById('function').value;
+            const selectedSeats = document.getElementById('selectedSeats').value;
+            const functionText = document.getElementById('function').selectedOptions[0].textContent;
+            const url = `/reserva_confirmada?function=${encodeURIComponent(selectedFunction)}&seats=${encodeURIComponent(selectedSeats)}&functionText=${encodeURIComponent(functionText)}`;
+            window.location.href = url;
+        }
+
+        document.addEventListener('DOMContentLoaded', showSeats);
+    </script>
 </body>
 </html>

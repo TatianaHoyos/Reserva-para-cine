@@ -29,18 +29,39 @@ document.addEventListener('DOMContentLoaded', function() {
     showSeats(document.getElementById('function').value);
 });
 
-function confirmarReserva() {
+// function confirmarReserva() {
  
+//     fetch('/confirmar_reserva', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ 'selectedSeats': 'selectedSeats' })
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         if (data.redirect) {
+//             window.location.href = data.redirect;
+//         }
+//     })
+//     .catch(error => console.error('Error:', error));
+// }
+function confirmarReserva() {
+    // Obtiene los datos de los asientos seleccionados del input oculto
+    var selectedSeats = document.getElementById('selectedSeats').value;
+
+    // Realiza la solicitud fetch para enviar los datos al servidor
     fetch('/confirmar_reserva', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ 'selectedSeats': 'selectedSeats' })
+        body: JSON.stringify({ 'selectedSeats': selectedSeats })
     })
     .then(response => response.json())
     .then(data => {
         if (data.redirect) {
+            // Redirige a la página de confirmación de reserva
             window.location.href = data.redirect;
         }
     })
