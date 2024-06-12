@@ -1,4 +1,5 @@
-from flask import render_template, request, jsonify, url_for
+from flask import render_template, request, jsonify, url_for, redirect, session
+
 from app import app
 from app.adapters.database.reservation_repository import ReservationRepository
 from app.domain.entities.movie import Movie
@@ -27,53 +28,29 @@ def reserva():
     funtion_repository = FuntionRepository()  
     funtion_use_case = FuntionUseCase(funtion_repository, room_repository)
     funtions = funtion_use_case.listar_funtion(movie_id)
-    return render_template('reserva.html', funtions=funtions, movie_id=movie_id)
+    return render_template('reserva.html', funtions=funtions)
 
-@app.route('/reservar', methods=['POST'])
-def reservar():
-    print(request.form)
-    movie_id = request.form['movie_id']
-    function_id = request.form['function_id']
-    seats = request.form['selectedSeats']
+
+@app.route('/confirmar_reserva', methods=['POST'])
+def confirmar_reserva():
+    data = request.get_json()
+    seats = data.get('selectedSeats')
+    function_id = data.get('function_id')
+    movie_id = data.get('movie_id')
+    room_id = data.get('room_id')
+
     reservation_repository = ReservationRepository()  
     reservation_use_case = ReservationUseCase(reservation_repository)
-    reservation_use_case.crear_reserva(movie_id, function_id, seats)
+    reserva = reservation_use_case.crear_reserva(movie_id, function_id, room_id, seats)
 
-    return redirect(url_for('confirmacion'))
-    
-@app.route('/eliminardatos')
-def eliminardatos():
-    movie_repository = MovieRepository()
-    room_repository = RoomRepository()
-    funtion_repository = FuntionRepository()  # No pasar room_repository
-    configuration_use_case = ConfiguratonUseCase(movie_repository, room_repository, funtion_repository)
-    configuration_use_case.eliminar_datos()
-    return "se eliminaron los datos"
+     # Guardar la reserva en la sesión
+    session['reserva'] = reserva
 
-@app.route('/confirmar_reserva', methods=['POST'])
-def confirmar_reserva():
-    data = request.get_json()
-    selected_seats = data.get('selectedSeats')
-    # Aquí puedes procesar los asientos seleccionados y realizar las acciones necesarias
-    # Por ejemplo, guardar la reserva en la base de datos
- 
-    # Redirige a la página de confirmación de reserva
+    # Responder con la URL de redirección
     return jsonify({'redirect': url_for('reserva_confirmada')})
 
-@app.route('/reserva_confirmada')
+@app.route('/reserva_confirmada', methods=['GET'])
 def reserva_confirmada():
-    return render_template('reserva_confirmada.html')
-
-@app.route('/confirmar_reserva', methods=['POST'])
-def confirmar_reserva():
-    data = request.get_json()
-    selected_seats = data.get('selectedSeats')
-    # Aquí puedes procesar los asientos seleccionados y realizar las acciones necesarias
-    # Por ejemplo, guardar la reserva en la base de datos
- 
-    # Redirige a la página de confirmación de reserva
-    return jsonify({'redirect': url_for('reserva_confirmada')})
-
-@app.route('/reserva_confirmada')
-def reserva_confirmada():
-    return render_template('reserva_confirmada.html')
+    # Obtener la reserva desde la sesión
+    reserva = session.get('reserva', None)
+    return render_template('reserva_confirmada.html', reserva=reserva)

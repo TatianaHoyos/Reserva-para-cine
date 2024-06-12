@@ -15,7 +15,7 @@ class FuntionRepository:
         funtion = [
             {"id": 1, "movie_id": 1, "room_id": 1, "date": "20/05/2024", "hora": "6:00 p.m"},
             {"id": 2, "movie_id": 1, "room_id": 1, "date": "20/05/2024", "hora": "8:00 p.m"},
-            {"id": 3, "movie_id": 1, "room_id": 1, "date": "20/05/2024", "hora": "10:00 p.m" },
+            {"id": 3, "movie_id": 1, "room_id": 1, "date": "20/05/2024", "hora": "10:00 p.m"},
             {"id": 4, "movie_id": 2, "room_id": 2, "date": "20/05/2024", "hora": "6:00 p.m"},
             {"id": 5, "movie_id": 2, "room_id": 2, "date": "20/05/2024", "hora": "8:00 p.m"},
             {"id": 6, "movie_id": 2, "room_id": 2, "date": "20/05/2024", "hora": "10:00 p.m"},

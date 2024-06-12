@@ -21,7 +21,10 @@
                 <label for="function">Funciones Disponibles</label>
                 <select class="form-control" id="function" name="function" required>
                     {% for function in funtions %}
-                        <option value="{{ function.id }}">
+                        <option value="{{ function.id }}"
+                        data-movie-id="{{ function.movie_id }}" 
+                        data-room-id="{{ function.room_id }}">
+                            
                             Sala: {{ function.room_id }}, Fecha: {{ function.date }}, Hora: {{ function.hora }}
                         </option>
                     {% endfor %}
@@ -54,7 +57,8 @@
             </div>
 
             <input type="hidden" id="selectedSeats" name="selectedSeats">
-            <button type="button" class="btn btn-primary" onclick="confirmarReserva()">Confirmar Reserva</button>        </form>
+            <button type="button" class="btn btn-primary" onclick="confirmarReserva()">Confirmar Reserva</button> 
+        </form>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
