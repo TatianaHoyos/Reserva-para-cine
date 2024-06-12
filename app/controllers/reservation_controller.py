@@ -45,6 +45,9 @@ def confirmar_reserva():
     reservation_use_case = ReservationUseCase(reservation_repository)
     reserva = reservation_use_case.crear_reserva(movie_id, function_id, room_id, seats)
 
+    # Asegúrate de que reserva es serializable (convertir a dict si es necesario)
+    if hasattr(reserva, 'to_dict'):
+        reserva = reserva.to_dict()
      # Guardar la reserva en la sesión
     session['reserva'] = reserva
 

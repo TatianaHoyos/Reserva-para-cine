@@ -9,8 +9,6 @@ class ReservationRepository:
         reservation_table = self.reservation_table
         Reservation = Query()
         result = reservation_table.search(Reservation.function_id.one_of(id_funtions))
-        print(id_funtions)
-        print(result)
         return result
 
     def save_reservation(self, reservation):

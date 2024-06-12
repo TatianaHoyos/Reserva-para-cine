@@ -5,3 +5,12 @@ class Reservation:
         self.function = function
         self.room = room
         self.seats = seats
+
+    def to_dict(self):
+        return {
+            'id': self.movie,
+            'movie': self.movie,
+            'function': self.function,
+            'room': self.room,
+            'seats': self.seats
+        }
