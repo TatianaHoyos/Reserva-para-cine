@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function confirmarReserva() {
- 
     fetch('/confirmar_reserva', {
         method: 'POST',
         headers: {

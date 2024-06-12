@@ -1,5 +1,4 @@
 from flask import render_template, request, jsonify, url_for
-from flask import render_template, request, jsonify, url_for
 from app import app
 from app.adapters.database.reservation_repository import ReservationRepository
 from app.domain.entities.movie import Movie
@@ -24,7 +23,6 @@ def reserva():
     if movie_id is None:
         # Manejar el caso en que movie_id es None, por ejemplo, redirigir a otra página o mostrar un mensaje de error
         return "Error: No se proporcionó un ID de película."
-    
     room_repository = RoomRepository()
     funtion_repository = FuntionRepository()  
     funtion_use_case = FuntionUseCase(funtion_repository, room_repository)
