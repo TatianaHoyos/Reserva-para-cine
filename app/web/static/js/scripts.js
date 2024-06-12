@@ -1,3 +1,4 @@
+
 function showSeats(id) {
     var seatContainers = document.querySelectorAll('.seat-container');
     seatContainers.forEach(function(container) {
@@ -30,10 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function confirmarReserva() {
-    // Obtiene los datos de los asientos seleccionados del input oculto
-    var selectedSeats = document.getElementById('selectedSeats').value;
-
-    // Realiza la solicitud fetch para enviar los datos al servidor
     fetch('/confirmar_reserva', {
         method: 'POST',
         headers: {
