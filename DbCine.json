@@ -1,1 +1,114 @@
-{"movies": {"1": {"id": 1, "title": "Pel\u00edcula 1", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Drama", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "2": {"id": 2, "title": "El Padrino", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Drama", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "3": {"id": 3, "title": "Interestelar", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Ciencia ficci\u00f3n", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "4": {"id": 4, "title": "Titanic", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Romance", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "5": {"id": 5, "title": "La La Land", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Musical", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "6": {"id": 6, "title": "El Se\u00f1or de los Anillos: La Comunidad del Anillo", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Fantas\u00eda", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "7": {"id": 7, "title": "Harry Potter y la piedra filosofal", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Fantas\u00eda", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "8": {"id": 8, "title": "El Rey Le\u00f3n", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Animaci\u00f3n", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "9": {"id": 9, "title": "Matrix", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Acci\u00f3n", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "10": {"id": 10, "title": "Forrest Gump", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Drama", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}, "11": {"id": 11, "title": "Gladiador", "synopsis": "Sinopsis de la pel\u00edcula 1", "duration": "120 min", "poster": "https://via.placeholder.com/300x400", "clasification": "Acci\u00f3n", "release_date": "2024-06-10", "language": "Ingl\u00e9s"}}}
+{
+    "movies": {
+        "1": {
+            "id": 1,
+            "title": "Pel\u00edcula 1",
+            "synopsis": "En un futuro no muy lejano, un grupo de rebeldes lucha contra un regimen autoritario que controla cada aspecto de la sociedad. Liderados por un enigmatico heroe, los rebeldes intentan recuperar la libertad y la dignidad de su pueblo. En el camino, enfrentaran desafios insuperables, traiciones inesperadas y secretos oscuros que podrian cambiar el curso de la historia. Con emocion, accion y una trama llena de giros inesperados, esta pelicula promete mantenerte al borde de tu asiento de principio a fin.",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Drama",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "2": {
+            "id": 2,
+            "title": "El Padrino",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Drama",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "3": {
+            "id": 3,
+            "title": "Interestelar",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Ciencia ficci\u00f3n",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "4": {
+            "id": 4,
+            "title": "Titanic",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Romance",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "5": {
+            "id": 5,
+            "title": "La La Land",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Musical",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "6": {
+            "id": 6,
+            "title": "El Se\u00f1or de los Anillos: La Comunidad del Anillo",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Fantas\u00eda",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "7": {
+            "id": 7,
+            "title": "Harry Potter y la piedra filosofal",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Fantas\u00eda",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "8": {
+            "id": 8,
+            "title": "El Rey Le\u00f3n",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Animaci\u00f3n",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "9": {
+            "id": 9,
+            "title": "Matrix",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Acci\u00f3n",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "10": {
+            "id": 10,
+            "title": "Forrest Gump",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Drama",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        },
+        "11": {
+            "id": 11,
+            "title": "Gladiador",
+            "synopsis": "Sinopsis de la pel\u00edcula 1",
+            "duration": "120 min",
+            "poster": "https://via.placeholder.com/300x400",
+            "clasification": "Acci\u00f3n",
+            "release_date": "2024-06-10",
+            "language": "Ingl\u00e9s"
+        }
+    }
+}

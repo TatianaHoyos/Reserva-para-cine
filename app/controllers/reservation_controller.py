@@ -42,8 +42,11 @@ def confirmar_reserva():
     room_id = data.get('room_id')
 
     reservation_repository = ReservationRepository()  
-    reservation_use_case = ReservationUseCase(reservation_repository)
+    room_repository = RoomRepository()
+    movie_repository = MovieRepository()
+    reservation_use_case = ReservationUseCase(reservation_repository, room_repository, movie_repository)
     reserva = reservation_use_case.crear_reserva(movie_id, function_id, room_id, seats)
+
 
     # Asegúrate de que reserva es serializable (convertir a dict si es necesario)
     if hasattr(reserva, 'to_dict'):

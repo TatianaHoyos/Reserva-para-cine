@@ -14,10 +14,15 @@ class RoomRepository:
         Room = Query()
         return room_table.search(Room.id.one_of(rooms_ids))
 
+    def get_room_by_id(self, room_id):
+        room_table = self.db.table('room')
+        Room = Query()
+        results = room_table.search(Room.id == int(room_id))
+        return results
+
     def insert_rooms(self):
         room_table = self.db.table('room')
         rooms = [
-            {'id': 1 ,'nombre': 'Sala 1', 'tipo_sala': 'Normal', 'capacidad': 100},
             {'id': 1 ,'nombre': 'Sala 1', 'tipo_sala': 'Normal', 'capacidad': 100},
             {'id': 2 ,'nombre': 'Sala 2', 'tipo_sala': 'Normal', 'capacidad': 150},
             {'id': 3 ,'nombre': 'Sala 3', 'tipo_sala': 'Normal', 'capacidad': 120},

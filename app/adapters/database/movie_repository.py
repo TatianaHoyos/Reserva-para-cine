@@ -8,6 +8,13 @@ class MovieRepository:
     def get_all_movies(self):
         return self.db.table('movies').all()
 
+    def get_movie_by_id(self, movie_id):
+        movie_table = self.db.table('movies')
+        Movie = Query()
+        results = movie_table.search(Movie.id == int(movie_id))
+        return results
+
+
     def insert_movies(self):
         movies_table = self.db.table('movies')
         movies = [

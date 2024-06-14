@@ -8,7 +8,7 @@ class Reservation:
 
     def to_dict(self):
         return {
-            'id': self.movie,
+            'id': self.id,
             'movie': self.movie,
             'function': self.function,
             'room': self.room,
