@@ -1,17 +1,25 @@
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 class ReservationRepository:
-    def __init__(self, db_file):
-        self.db = TinyDB(db_file)
+    def __init__(self):
+        self.db = TinyDB("reservation.json")
         self.reservation_table = self.db.table("reservation")
 
-    def create_empty_table(self):
-        if not self.reservation_table.all():
-            self.reservation_table.insert({'id': 0, "movie_id": 0, "function_id": 0, 'seats': ''})
+    def consultar_reservaciones(self, id_funtions):
+        reservation_table = self.reservation_table
+        Reservation = Query()
+        result = reservation_table.search(Reservation.function_id.one_of(id_funtions))
+        return result
 
     def save_reservation(self, reservation):
-        self.reservation_table.insert({
-            'movie_id': reservation.movie_id,
-            'function_id': reservation.function_id,
-            'seats': reservation.seats
+        result = self.reservation_table.insert({
+            'movie_id': reservation['movie_id'],
+            'function_id': int(reservation['function_id']),
+            'room_id' : reservation['room_id'],
+            'seats': reservation['seats']
         })
+        return result
+
+         
+    def delete_all_reservation(self):
+       self.reservation_table.truncate()

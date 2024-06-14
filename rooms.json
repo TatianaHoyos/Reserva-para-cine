@@ -1,1 +1,28 @@
-{"room": {"1": {"id": 1, "nombre": "Sala 1", "tipo_sala": "Normal", "capacidad": 100}, "2": {"id": 1, "nombre": "Sala 1", "tipo_sala": "Normal", "capacidad": 100}, "3": {"id": 2, "nombre": "Sala 2", "tipo_sala": "Normal", "capacidad": 150}, "4": {"id": 3, "nombre": "Sala 3", "tipo_sala": "Normal", "capacidad": 120}, "5": {"id": 4, "nombre": "Sala 4", "tipo_sala": "Normal", "capacidad": 200}}}
+{
+    "room": {
+        "1": {
+            "id": 1,
+            "nombre": "Sala 1",
+            "tipo_sala": "Normal",
+            "capacidad": 100
+        },
+        "3": {
+            "id": 2,
+            "nombre": "Sala 2",
+            "tipo_sala": "Normal",
+            "capacidad": 150
+        },
+        "4": {
+            "id": 3,
+            "nombre": "Sala 3",
+            "tipo_sala": "Normal",
+            "capacidad": 120
+        },
+        "5": {
+            "id": 4,
+            "nombre": "Sala 4",
+            "tipo_sala": "Normal",
+            "capacidad": 200
+        }
+    }
+}

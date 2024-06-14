@@ -15,18 +15,41 @@
             margin: 0 auto;
             padding-top: 50px;
             text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
         h1 {
             color: #007bff;
+            margin-bottom: 20px;
         }
         p {
             color: #6c757d;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .btn {
             background-color: #007bff;
             color: #fff;
             border: none;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .movie-poster {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+        .details-list {
+            text-align: left;
+            margin: 0 auto 20px auto;
+            padding: 0;
+            list-style-type: none;
+        }
+        .details-list li {
+            color: #6c757d;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -34,11 +57,19 @@
     <div class="container">
         <h1>¡Reserva Confirmada!</h1>
         <p>Tu reserva ha sido confirmada con éxito.</p>
-        <h2>Detalles de la reserva:</h2>
-        <p>Película: {{ movie }}</p>
-        <p>Sala: {{ room }}</p>
-        <p>Asientos seleccionados: {{ seats }}</p>
+        <h2>Detalles de la reserva: {{reserva.id}}</h2>
+        <p>Película: {{ reserva.movie[0].title }}</p>
+        <ul class="details-list">
+            <li>{{ reserva.movie[0].synopsis }}</li>
+            <li><img src="{{ reserva.movie[0].poster }}" class="movie-poster" alt="{{ reserva.movie[0].title }}"></li>
+            <li>Fecha de Estreno: {{reserva.movie[0].release_date}}</li>
+            <li>Idioma: {{reserva.movie[0].language}}</li>
+            <li>Clasificación: {{reserva.movie[0].clasification}}</li>
+        </ul>
+        <p>Sala: {{ reserva.room[0].nombre }}</p>
+        <p>Asientos seleccionados: {{ reserva.seats }}</p>
         <button class="btn" onclick="window.location.href='/';">Volver al Inicio</button>
     </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>

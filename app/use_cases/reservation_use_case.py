@@ -1,14 +1,25 @@
 from app.domain.entities.reservation import Reservation
 
 class ReservationUseCase:
-    def __init__(self, reservation_repository):
+    def __init__(self, reservation_repository, room_repository, movie_repository):
         self.reservation_repository = reservation_repository
+        self.room_repository = room_repository
+        self.movie_repository = movie_repository
 
-    def crear_reserva(self, movie_id, function_id, seats):
-        # Verificar si movie_id es None antes de intentar crear la reserva
-        if movie_id is None:
-            raise ValueError("No se proporcionó un ID de película para la reserva.")
+    def crear_reserva(self, movie_id, function_id, room_id, seats):
         
-        # Crear la reserva solo si movie_id no es None
-        reserva = Reservation(id=None, movie=movie_id, function=function_id, seats=seats)
-        self.reservation_repository.save_reservation(reserva)
+        # 
+        reserva = {
+            'movie_id': movie_id,
+            'function_id': function_id,
+            'room_id': room_id,
+            'seats': seats
+            }
+        reserva_id = self.reservation_repository.save_reservation(reserva)
+
+        room = self.room_repository.get_room_by_id(room_id)
+        movie = self.movie_repository.get_movie_by_id(movie_id)
+
+
+        reserva_result = Reservation(id=reserva_id, movie=movie, function="",room=room, seats=seats)
+        return reserva_result
